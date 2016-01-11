@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>Greg's Gambits | Game of 21</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function play21()
+{
+	var Dealer = 0;
+	var Player = 0;
+	var DealerPoints = 0;
+	var PlayerPoints = 0;
+	var rNum = 0;
+	var choice = "y";
+	var choice1 = "y";
+	var maxPoints = 0;  
+	var roundNum = 0;
+
+
+	maxPoints = prompt("Please define the Maximum Points for this game (or type : 'done') : ", " ");
+//while loop for entire game process
+	while((PlayerPoints < maxPoints) && (DealerPoints < maxPoints) && (maxPoints != "done"))
+	{
+		//Generate 2 random number between 2 and 11 for the Player - FOR LOOP
+		roundNum++;
+		for(var count=0; count<2; count++)
+		{
+			rNum = Math.floor(Math.random()*10 + 2);
+			Player = Player + rNum;
+		}
+		//Generate 2 random number between 2 and 11 for the Dealer - FOR LOOP
+		for(var count=0; count<2; count++)
+		{
+			rNum = Math.floor(Math.random()*10 + 2);
+			Dealer = Dealer + rNum;
+		}
+		//Display Player TOTAL
+		alert("ROUND" + roundNum + " : Player score: " + Player);
+		//ASK Player for a CARD? y for YES and n for NO
+		if(Player < 21)
+		{
+			choice = prompt("Do you want another card (or type : 'done') : ", " ");
+		}
+		if (choice == "done")
+		{
+			maxPoints = "done";
+		}
+		while((choice != "n") && (Player < 21) && (choice != "done"))
+		{
+			rNum = Math.floor(Math.random()*10 + 2);
+			Player = Player + rNum;
+			alert("ROUND" + roundNum + " : Player score: " + Player);
+			if(Player < 21)
+			{
+				choice = prompt("Do you want another card (or type : 'done') : ", " ");
+				if (choice == "done")
+				{
+					maxPoints = "done";
+				}
+			}
+		}	
+
+		//Calculate the Scores to see if either Player or Dealer wins?
+		if((Player <= 21) && (Dealer > 21))
+		{
+			PlayerPoints = PlayerPoints + Player;
+			alert("ROUND" + roundNum + " : Player Wins !!! Current PlayerPoints: " + PlayerPoints);
+		}
+		
+		if((Dealer <= 21) && (Player > 21))
+		{
+			DealerPoints = DealerPoints + Dealer;
+			alert("ROUND" + roundNum + " : Dealer Wins !!! Current DealerPoints: " + DealerPoints);
+		}
+		
+		if((Dealer > 21) && (Player > 21))
+		{
+			
+			alert("ROUND" + roundNum + " : Both Dealer and Player Busted. No Points Awarded");
+		}
+		
+		if((Dealer <= 21) && (Player <= 21))
+		{
+			if(Dealer > Player)
+			{
+				DealerPoints = DealerPoints + Dealer;
+				alert("ROUND" + roundNum + " : Dealer Wins !!! Current DealerPoints: " + DealerPoints);
+			}
+			else if(Player > Dealer)
+			{
+				PlayerPoints = PlayerPoints + Player;
+				alert("ROUND" + roundNum + " : Player Wins !!! Current PlayerPoints: " + PlayerPoints);
+			}
+			else
+			{
+				alert("ROUND" + roundNum + " : Tie. No Points Awarded");
+			}
+		}
+//set the Player & Dealer Scores to ZERO in order to start above loop without any miss calculating of scores
+		Player = 0;
+		Dealer = 0;
+		
+	//Final Round to reach the Maximum defined points of this game and see who is winner?	
+	}
+	if(PlayerPoints >= maxPoints)
+	{
+		alert("FINAL ROUND : Player Wins the Game at ROUND " + roundNum + " !!!");
+	}
+	else
+	{
+		alert("FINAL ROUND : Dealer Wins the Game at ROUND " + roundNum + " !!!");
+	}
+	alert("GAME OVER! : Player Points [ " + PlayerPoints + " ]  |  Dealer Points [ " + DealerPoints + " ]");
+}
+</script>
+</head>
+
+<body>
+<div id="container">
+ <img src="images/superhero.jpg" width="120" height="120" class="floatleft" />
+ <h1 id="logo"><em>Greg's Gambits | Game of 21</em></h1>
+  
+<p>&nbsp;</p>
+<div id="nav">
+  <p><a href="index.html">Home</a>
+  <a href="greg.html">About Greg</a>
+  <a href="play_games.html">Play a Game</a>
+  <a href="sign.html">Sign In</a>
+  <a href="contact.html">Contact Us</a></p>
+ </div>
+ 
+ <div id="content">
+	 <p>&nbsp;</p>
+     <center class="btn">
+<input class="btn1" type="button" onclick="play21()" value="Play Game 0f 21" style="padding: 25px 30px;border-radius: 45px; margin-top:300px; "/>
+</div>
+
+<div id="footer">Copyright &copy; 2015 Moeen's Gambits<br />
+<a href="mailto:moeen.aqrabawi@gmail.com">moeen.aqrabawi@gmail.com</a>
+</div>
+
+</body>
+</html>

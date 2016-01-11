@@ -1,0 +1,134 @@
+/* ------------------------------------ */
+/* <> <> <> Page Layout Styles <> <> <> */
+/* ------------------------------------ */
+
+/* Basic BODY structure */
+body {
+	width: 1000px;
+	background-color: #000040;
+}
+
+/* Basic HEADER structure */
+#header {
+	background-color: #000040;
+	width: 100%;
+}
+
+/* Basic BANNER (header/footer) structure */
+#banner {
+	width: 770px;
+	float: right;
+	padding: 15px;	
+}
+
+/* Basic LEFT-SIDE NAVIGATION structure */
+#nav {
+	margin-left: 20px;
+	float: left;
+	width: 180px;
+	text-align: left;
+}
+
+/* Basic PAGE CONTENT structure */
+#content {
+	width: 78%;
+	float: left;
+	background-color: #88ffff;
+	color: #000040;
+	padding: 10px;
+}
+
+
+/* ---------------------------------------------- */
+/* <> <> <> Block Element Display Styles <> <> <> */
+/* ---------------------------------------------- */
+
+/* BANNER (header/footer) display styles */
+.banner {
+	color: #88ffff;
+	font-style: italic;
+	background-color: #000040;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* <> <> <> Table Styles <> <> <> */
+table { 
+	border-collapse: collapse;
+}
+
+td {
+	border: 2px solid #88ffff;
+	font-family: "Courier New", Courier, mono;
+	font-size: 14px;
+	color: #000040;
+	font-weight: bold;
+	padding: 3px;
+}
+
+.antonTD {
+	border: 3px solid #000040;
+	color: #000040;
+	font-weight: bold;
+	text-align: center;
+	padding: 3px;
+}
+
+/* -------------------------------------------------- */
+/* <> <> <> Specific Element Display Styles  <> <> <> */
+/* -------------------------------------------------- */
+
+/* <> <> <> Anchor Styles <> <> <> */
+
+a {
+	text-decoration: none;
+	color: #88ffff;
+}
+
+.contentAnchor {
+	color: #000040;
+	font-weight:bold;
+	font-family: "Courier New", Courier, mono;
+	font-size: 14px;
+}
+
+.navA {
+	background-color: #000040;
+	color: #88ffff;
+	font-weight: bold;
+	font-size: .90em;
+}
+
+a:hover {
+	color: #000040;
+	background-color: #88ffff;
+}
+
+h1 {
+	text-transform: uppercase;
+	font-size: 1.4em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+	font-size: 1em;
+}
+
+.phpH2 {
+	font-weight: bold;
+	background-color: #000040;
+    color: #88ffff;
+    font-size: 1em;
+}
+
+.phpH3 {
+	color: #000040;
+	font-size: 1em;
+	width: 100%;
+	border-bottom: 1px solid #000000;
+	text-align: center;
+}
+

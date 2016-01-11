@@ -1,0 +1,140 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Greg's Gambits | Hangman</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="mySource.js"></script>
+<script>
+function startHangman()
+{
+
+	//declare and initialize variables
+	var nooseCount = 0;
+	var wordNum = Math.floor((Math.random() * 9) + 1);
+	var picture = "pic" + wordNum + ".jpg";
+	
+	
+	//create switch structure to select a random word
+	switch(wordNum)
+	{
+		case 1:
+			word = "ghost"; break;
+		case 2:
+			word = "horse"; break;
+		case 3:
+			word = "insect"; break;
+		case 4:
+			word = "celery"; break;
+		case 5:
+			word = "pelican"; break;
+		case 6:
+			word = "jewelbox"; break;
+		case 7:
+			word = "castle"; break;
+		case 8:
+			word = "monster"; break;
+		case 9:
+			word = "bunny"; break;
+	}
+	
+	var newWord = ""; var win = false;
+	var lgth = word.length;
+	var guessLetter; var goodGuess = false;
+	
+	for (var i = 0; i < lgth; i++)
+	newWord = newWord + "_ ";
+	document.getElementById("noose").innerHTML = ("<img src = 'images/hangman0.gif' />");
+	document.getElementById("game").innerHTML = newWord;
+	
+	//create code to get user's letters and display
+	while (win == false && nooseCount < 10)
+	{
+		goodGuess = false;
+		guessLetter = prompt("Guess a letter");
+		
+		for (var j = 0; j < lgth; j++)
+		{
+			if (guessLetter == word.charAt(j))
+			{
+				goodGuess = true;
+				var offSet = 2*j;
+				newWord = setCharAt(newWord, offSet, guessLetter);
+			}
+		}
+		document.getElementById("game").innerHTML = newWord;
+		win = checkWord(word, newWord);
+		if (win == true)
+		{
+			document.getElementById("result").innerHTML = ("You Win!");
+			document.getElementById("<img src = '" + picture + "' />");
+		}
+			 //hangman images where necessary
+			//or to enter a correct guess in the appropriate space
+		else if (win == false)
+		{
+			document.getElementById("result").innerHTML = ("not a winner yet");
+			if (goodGuess == false)
+				nooseCount = nooseCount+1;
+				document.getElementById("noose").innerHTML = ("<img src = 'images/hangman" + nooseCount +".gif' />");
+		}
+	}
+}
+		
+	function checkWord (word, otherWord)
+	{
+		var cleanWord;
+		cleanWord = otherWord;
+		cleanWord = otherWord.replace(/ /g, "");
+		if (word == cleanWord)
+		return true;
+		else
+		return false;
+	}
+	
+	//create function to check the word and replace a space with a correct guess
+	function setCharAt(str, index, chr)
+	{
+		if (index > str.length-1)
+			return str;
+		return str.substr(0,index) + chr + str.substr(index+1);
+		
+	}
+
+	
+	
+
+
+	
+</script>
+</head>
+<body>
+	<div id="container">
+		<img src="images/superhero.jpg" class="floatleft" />
+		<h1 id="logo"><em>The Game of Hangman</em></h1>
+ 		<h2 align="center">Greg Challenges You to a Game of Hangman</h2>
+		<p>&nbsp;</p>
+<div id="nav">
+  <p><a href="index.html">Home</a>
+  <a href="greg.html">About Greg</a>
+  <a href="play_games.html">Play a Game</a>
+  <a href="gregs_tales.html"> Greg's Tales</a>
+  <a href="sign.html">Sign In</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="greg_aboutyou.html">Tell Greg About You</a></p>
+</div>
+	<div id="content" style="width: 600px; margin-left: auto; margin-right: auto;">
+		<!-- create HTML to start the game, with initial display -->
+		<p><input type="button" value = "Start the game" onclick="startHangman();" /></p>
+		<div id = "noose" class = "floatright">
+		<img src = "images/hangman10.gif" />
+		</div>
+		<div id = "game"> <p> &nbsp; </p></div>
+		<div id = "result"> <p> &nbsp; </p></div>
+		
+	</div>
+	<div id="footer">Copyright &copy; 2015 Moeen's Gambits<br />
+		<a href="mailto:moeen.aqrabawi@gmail.com">moeen.aqrabawi@gmail.com</a></div>
+	</div>
+</body>
+</html>

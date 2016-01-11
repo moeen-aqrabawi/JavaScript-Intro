@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Greg's Gambits | Greg's Tales Second Tale</title>
+	<link href="greg.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+	function startGame()
+	{
+				// initialize variables and prompt for information
+
+		var number = 0;
+		var name = " ";
+		var verb = " ";
+		var pronnoun = " ";
+		var objective = " ";
+		name = prompt("Enter a name : ");
+		verb = prompt("Enter a verb : ");
+		pronoun = prompt("Enter a pronoun : ");
+		objective = prompt("Enter objective : ");
+		number = prompt("Enter a number : ");
+		num = parseInt(number);
+		numtype = (num < 100)?"Less than 100 times":"More or equal to 100 times"; 
+		
+		document.getElementById("content").innerHTML =("<p> The story is : The person name " +  name  + " , and You, both were " + verb + " togather!." + name + "  loves to " + verb + ".</p> <p>" + name + " also enjoyed talking to people... One day " + pronoun + " was " + verb + "ing  with " + objective + " <p>. <br/> <p> You also  " + verb + " " + numtype + " " + objective + ". </p>" );
+		}
+	</script>
+	</head>
+	<body>
+		<div id="container">
+		<img src="images/superhero.jpg" class="floatleft" />
+		<h1><em>Greg's Tales</em></h1>
+		<h3>For this game, you will create a story by entering words as prompted. The story will change each time you run this game, as you enter different words.</h3>
+		<div id="nav">
+			<p><a href="index.html">Home</a>
+			<a href="greg.html">About Moeen</a>
+			<a href="play_games.html">Play a Game</a>
+			<a href="sign.html">Sign In</a>
+			<a href="contact.html">Contact Us</a></p>
+		</div>
+		<div id="content">
+			<p>&nbsp;</p>
+		<input type = "button" value = "Click to begin" onclick="startGame()" />
+		</div>
+	
+    	<div id="footer">
+        <p>&nbsp;Copyright &copy; 2015 Moeen's Gambits<br />
+			<a href="mailto:moeen.aqrabawi@gmail.com"> moeen.aqrabawi@gmail.com</a></p>
+		</div> 
+		</div>
+	</body>
+</html>

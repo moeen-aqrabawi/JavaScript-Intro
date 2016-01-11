@@ -1,0 +1,195 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Greg's Gambits | Rolling Dice</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="mySource.js"></script>
+
+<script>
+function rollDice()
+{
+
+	// hold totals
+	var compTotal = 0;
+	var yourTotal = 0;
+
+	var compSum = 0;
+	var yourSum = 0;
+	var play = prompt("Enter 'q' to quit or Press the 'Ok' button to roll again","");
+	
+	while ((play != "q") && (compTotal < 100) && (yourTotal < 100))
+	{
+
+	//generate random num
+	//computer roll
+	var compDice1 = Math.floor((Math.random() * 6) + 1);
+	var compDice2 = Math.floor((Math.random() * 6) + 1);
+	document.getElementById("compRoll1").innerHTML = compDice1;
+	document.getElementById ("compRoll2").innerHTML = compDice2;
+	
+	//your roll
+	var yourDice1 = Math.floor((Math.random() * 6) + 1);
+	var yourDice2 = Math.floor((Math.random() * 6) + 1);
+	document.getElementById("yourRoll1").innerHTML = yourDice1;
+	document.getElementById("yourRoll2").innerHTML = yourDice2;
+	
+	// for making revision to double points and add section
+	//if ((compSum > yourSum) && (compDice1 == compDice2) || (yourSum > compSum) && (yourDice1 == //yourDice2))
+	//{
+			//For double points when the dice rolls the same number.
+		if ((compDice1 == compDice2) || (yourDice1 == yourDice2))
+		{
+			if (compDice1 == compDice2)
+			{
+				var compSum = ((compDice1 + compDice2)*2);
+				var compTotal = compTotal + compSum;
+			}
+			if (yourDice1 == yourDice2)
+			{
+				var yourSum = ((yourDice1 + yourDice2)*2);
+				var yourTotal = yourTotal + yourSum;
+			}
+	
+		}
+	
+
+	//}
+	
+	else
+		{
+			//sum rolls for computer and user when no doubles exisit
+			var compSum = compDice1+compDice2;
+			var yourSum = yourDice1+yourDice2;
+		}
+
+		// when there is a tie in sum of roll no one gets points
+		if (compSum == yourSum)
+		{
+			document.getElementById("message").innerHTML = "Tie - Sum is the same, no points awarded."
+			compTotal = (compTotal-compSum);
+			document.getElementById("roundWin1").innerHTML = " ";
+			yourTotal = (yourTotal-yourSum);
+			document.getElementById("roundWin2").innerHTML = " ";
+		}
+		
+	
+		//determine round winner by comparing sum
+		if (compSum > yourSum)
+		{
+		document.getElementById("roundWin1").innerHTML = "Winner!";
+		document.getElementById("roundWin2").innerHTML = " "; // delete old winner entry
+		}
+		if (compSum  < yourSum)
+		{
+		document.getElementById("roundWin2").innerHTML = "Winner!";
+		document.getElementById("roundWin1").innerHTML = " "; //delete old winner entry
+		}
+	
+		//add results to page
+		document.getElementById("compResult").innerHTML = compSum;
+		document.getElementById("yourResult").innerHTML = yourSum;
+	
+	
+	
+	//determine round winner by comparing sum
+	if (compSum > yourSum)
+	{
+	document.getElementById("roundWin1").innerHTML = "Winner!";
+	}
+
+	if (compSum < yourSum)
+	{
+	document.getElementById("roundWin2").innerHTML = "Winner!";
+	}
+	
+
+	
+	//add results to page
+	document.getElementById("compResult").innerHTML = compSum;
+	document.getElementById("yourResult").innerHTML = yourSum;
+	
+
+	
+	//update total for each user on page
+	if ((compTotal < 100) || (yourTotal < 100))
+	{
+		var compTotal = compTotal+compSum;
+		document.getElementById("compTotal").innerHTML = compTotal;
+		var yourTotal = yourTotal+yourSum;
+		document.getElementById("yourTotal").innerHTML = yourTotal;
+	
+	//determine the winner
+	if (compTotal > 99)
+	document.getElementById("winner1").innerHTML = "You Win!"
+	if(yourTotal > 99)
+	document.getElementById("winner2").innerHTML = "You Win!"
+	}
+	
+
+	play = prompt("Enter 'q' to quit or Press the 'Ok' button to roll again","");
+	document.getElementById("message").innerHTML = " ";
+	}
+	
+}
+	
+</script>
+</head>
+<body>
+	<div id="container">
+		<img src="images/superhero.jpg" class="floatleft" />
+		<h1 id="logo"><em>Rolling Dice</em></h1>
+ 		<h2 align="center">Greg Challenges You to a Game of Rolling Dice</h2>
+		<p>&nbsp;</p>
+		
+
+<div id="nav">
+  <p><a href="index.html">Home</a>
+  <a href="greg.html">About Greg</a>
+  <a href="play_games.html">Play a Game</a>
+  <a href="gregs_tales.html"> Greg's Tales</a>
+  <a href="sign.html">Sign In</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="greg_aboutyou.html">Tell Greg About You</a></p>
+</div>
+	<div id="content" style="width: 600px; margin-left: auto; margin-right: auto;">
+		<!-- create HTML to start the game, with initial display -->
+
+		<div id = "results" class = "#">
+		<p> You and the computer will roll two dice. The results of both rolls for each player will display below. Click 'OK.' Or the 'Enter' button on your keyboard at the prompt to continue rolling the dice. First to reach 100 or more wins! You get double the points for rolling the same number! In case of a tie, no points will be awarded. Tip: Scroll to the bottom of the page, so that the table is in the middle of your window when you press the Roll Dice button. </p>
+		<p> The dice rolls between 1 and 6.</p>
+		<p><input type="button" value = "Roll dice" onclick="rollDice();" />
+		<input type="button" value = "Press to restart game" onclick="location.href = 'betTheRoll.html'"; /></p>
+		<table width = "400px">
+			<!--row 1-->
+			<tr>
+			<td><p>The computer rolled: </p></td>
+			<td><p>You rolled: </p></td>
+			</tr>
+			<!--row 2-->
+			<tr>
+			<td><p> &nbsp Dice 1: <span id="compRoll1"> </p> <p> </span> &nbsp Dice 2: <span id="compRoll2"></span></p></td>
+			<td><p> &nbsp Dice 1: <span id="yourRoll1"> </p> <p> </span> &nbsp Dice 2: <span id="yourRoll2"></span></p></td>
+			</tr>
+			<!-- row 3, the results-->
+			<tr>
+			<td><p> &nbsp Sum: <span id="compResult"> </span> </p><p> &nbsp <span id="roundWin1"> </span></p></td>
+			<td><p> &nbsp Sum: <span id="yourResult"> </span> </p><p> &nbsp <span id="roundWin2"> </span></p></td>
+			</tr>
+			<!-- row 3, sum-->
+			<tr>
+			<td><p> &nbsp Total: <span id="compTotal"> </span> </p><p> &nbsp <span id="winner1"> </span></p></td>
+			<td><p> &nbsp Total: <span id="yourTotal"> </span> </p><p> &nbsp <span id="winner2"> </span> </p></td>
+			</tr>
+			
+			Message: <span id="message"> </span>
+			
+		</table>
+		
+		</div>
+
+	</div>
+		<div id="footer">Copyright &copy; 2015 Moeen's Gambits<br />
+		<a href="mailto:moeen.aqrabawi@gmail.com">moeen.aqrabawi@gmail.com</a></div>
+</body>
+</html>
